@@ -26,7 +26,7 @@ class Search extends Component {
                 const { items: resArr } = res.data;
                 const results = [];
                 resArr.forEach(item => {
-                    const { title, authors: author, previewLink: link,  } = item.volumeInfo;
+                    const { title, authors: author, previewLink: link, } = item.volumeInfo;
                     const { thumbnail: image } = item.volumeInfo.imageLinks;
                     const description = item.volumeInfo.searchInfo.textSnippet;
 
@@ -50,14 +50,16 @@ class Search extends Component {
     }
 
     render() {
-        <SearchBox 
-            searchValue={this.state.searchValue}
-            onClick={this.handleClick}
-            onChange={this.handleChange}
-        />
-        <ResultsBox 
-            results={this.results}
-        />
+        <div>
+            <SearchBox
+                searchValue={this.state.searchValue}
+                onClick={this.handleClick}
+                onChange={this.handleChange}
+            />
+            <ResultsBox
+                results={this.state.results}
+            />
+        </div>
     }
 }
 
