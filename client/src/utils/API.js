@@ -1,9 +1,10 @@
 import axios from "axios";
+import config from "./config";
 
 export default {
     // Gets all books
     searchBooks: function (searchValue) {
-        return axios.get(`https://www.googleapis.com/books/v1/volumes?q=${searchValue}&key=AIzaSyCA7K2OiqwryC4H6PzM8jannybljBnjrI8`);
+        return axios.get(`https://www.googleapis.com/books/v1/volumes?q=${searchValue}&key=${config.apiKey}`);
     },
     getBooks: function () {
         return axios.get("/api/books");
