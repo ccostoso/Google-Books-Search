@@ -1,23 +1,23 @@
 import React from "react";
 import { Input, FormBtn } from "../../UniversalComponents/Form";
-import Grid, { Container } from "../../UniversalComponents/Grid";
+import { Container } from "../../UniversalComponents/Grid";
 
 export const SearchBox = ({ searchValue, handleChange, handleClick }) => {
     return (
         <Container>
             <form>
                 <div className=".form-group">
-                    <label for="#search-input">Book</label>
+                    <label htmlFor="#search-input">Book</label>
                     <Input
                         value={searchValue}
                         onChange={handleChange}
-                        name="title"
+                        name="searchValue"
                         placeholder="Search for a Book"
                     />
                 </div>
                 <FormBtn
-                    disabled={!searchValue}
-                    onChange={handleClick}
+                    disabled={searchValue}
+                    onClick={handleClick}
                 >
                     Search
                 </FormBtn>

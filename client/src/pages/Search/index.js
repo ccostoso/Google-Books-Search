@@ -5,37 +5,44 @@ import API from "../../utils/API";
 
 class Search extends Component {
     state = {
-        searchValue: "",
+        searchValue: "Insert a book title here",
         results: [],
     }
 
-    handleChange(e) {
-        const { value } = e.target;
-        this.setState({
-            searchValue: value,
-        });
+    componentDidMount() {
+        
     }
 
-    handleClick(e) {
-        e.preventDefault();
+    handleChange = e => {
+        const { name, value } = e.target;
+        this.setState({
+            [name]: value,
+        });
 
-        const { searchValue } = this.state.searchValue;
+        console.log(this.state.searchValue);
+    }
+
+    handleClick = event => {
+        event.preventDefault();
+
+        const { searchValue } = this.state;
+        console.log(searchValue);
 
         API.searchBooks(searchValue)
             .then(res => {
-                const { items: resArr } = res.data;
+                const { items } = res.data;
+                console.log(items);
                 const results = [];
-                resArr.forEach(item => {
-                    const { title, authors: author, previewLink: link, } = item.volumeInfo;
+                items.forEach(item => {
+                    const { title, authors: author, previewLink: link } = item.volumeInfo;
                     const { thumbnail: image } = item.volumeInfo.imageLinks;
-                    const description = item.volumeInfo.searchInfo.textSnippet;
-
+                    // const description = (item.searchInfo.textSnippet || "");
                     const result = {
                         title: title,
                         author: author,
                         link: link,
                         image: image,
-                        description: description,
+                        // description: description,
                     }
 
                     results.push(result);
@@ -45,21 +52,25 @@ class Search extends Component {
                 this.setState({
                     results: results,
                 });
+
+                console.log(this.state.results);
             })
             .catch(err => console.log(err));
     }
 
     render() {
-        <div>
-            <SearchBox
-                searchValue={this.state.searchValue}
-                onClick={this.handleClick}
-                onChange={this.handleChange}
-            />
-            <ResultsBox
-                results={this.state.results}
-            />
-        </div>
+        return (
+            <div>
+                <SearchBox
+                    value={this.state.searchValue}
+                    handleClick={this.handleClick}
+                    handleChange={this.handleChange}
+                />
+                {/* <ResultsBox
+                    results={this.state.results}
+                /> */}
+            </div>
+        )
     }
 }
 

@@ -1,10 +1,10 @@
 import React, { Component } from "react";
-import { SavedBox } from "../../components/SavedComponents/SavedBox";
+// import { SavedBox } from "../../components/SavedComponents/SavedBox";
 import API from "../../utils/API";
 
 class Saved extends Component {
     state = {
-        results =[]
+        results: []
     }
 
     componentDidMount() {
@@ -29,7 +29,7 @@ class Saved extends Component {
             .catch(err => console.log(err))
     }
 
-    handleClick(e) {
+    handleClick = e => {
         const { id } = e.target
 
         e.preventDefault();
@@ -38,10 +38,13 @@ class Saved extends Component {
     }
 
     render() {
-        <SavedBox
-            results={this.state.results}
-            handleClick={this.handleClick}
-        />
+        return (
+            <div>hi</div>
+            // <SavedBox
+            //     results={this.state.results}
+            //     handleClick={this.handleClick}
+            // />
+        )
     }
 }
 
