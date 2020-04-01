@@ -36,13 +36,15 @@ class Search extends Component {
                 items.forEach(item => {
                     const { title, authors: author, previewLink: link } = item.volumeInfo;
                     const { thumbnail: image } = item.volumeInfo.imageLinks;
-                    // const description = (item.searchInfo.textSnippet || "");
+                    const { id } = item;
+                    const description = item.searchInfo ? item.searchInfo.textSnippet : "No description provided";
                     const result = {
                         title: title,
                         author: author,
                         link: link,
                         image: image,
-                        // description: description,
+                        description: description,
+                        id: id,
                     }
 
                     results.push(result);
@@ -66,9 +68,9 @@ class Search extends Component {
                     handleClick={this.handleClick}
                     handleChange={this.handleChange}
                 />
-                {/* <ResultsBox
+                <ResultsBox
                     results={this.state.results}
-                /> */}
+                />
             </div>
         )
     }

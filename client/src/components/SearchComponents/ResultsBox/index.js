@@ -1,11 +1,16 @@
 import React from "react";
-import { Container, Row } from "../../UniversalComponents/Grid";
+import { Container } from "../../UniversalComponents/Grid";
+import { ResultsCard } from "../ResultsCard";
 
 export const ResultsBox = ({ results }) => {
     return (
         <Container>
-            hi
-            {results.map(result => result.title)}
+            {results.map(result => <ResultsCard
+                result={result}
+                key={result.id}
+                />
+            )
+            }
         </Container>
     )
 }
