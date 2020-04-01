@@ -5,23 +5,25 @@ import { Container } from "../../UniversalComponents/Grid";
 export const SearchBox = ({ searchValue, handleChange, handleClick }) => {
     return (
         <Container>
-            <form>
-                <div className=".form-group">
-                    <label htmlFor="#search-input">Book</label>
-                    <Input
-                        value={searchValue}
-                        onChange={handleChange}
-                        name="searchValue"
-                        placeholder="Search for a Book"
-                    />
-                </div>
-                <FormBtn
-                    disabled={searchValue}
-                    onClick={handleClick}
-                >
-                    Search
+            <div className="card p-4 my-4">
+                <h5>Book Search</h5>
+                <form>
+                    <div className=".form-group">
+                        <Input
+                            value={searchValue}
+                            onChange={handleChange}
+                            name="searchValue"
+                            placeholder="Search for a Book"
+                        />
+                    </div>
+                    <FormBtn
+                        disabled={searchValue}
+                        onClick={handleClick}
+                    >
+                        Search
                 </FormBtn>
-            </form>
+                </form>
+            </div>
         </Container>
     )
 };

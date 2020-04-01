@@ -2,15 +2,19 @@ import React from "react";
 import { Container } from "../../UniversalComponents/Grid";
 import { ResultsCard } from "../ResultsCard";
 
-export const ResultsBox = ({ results }) => {
+export const ResultsBox = ({ results, formatAuthors }) => {
     return (
         <Container>
-            {results.map(result => <ResultsCard
-                result={result}
-                key={result.id}
+            <div className="card p-4 my-4">
+                <h5>Results</h5>
+                {results.map(result => <ResultsCard
+                    key={result.id}
+                    result={result}
+                    formatAuthors={formatAuthors}
                 />
-            )
-            }
+                )
+                }
+            </div>
         </Container>
     )
 }

@@ -3,14 +3,14 @@ import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { Row, Col } from "../../UniversalComponents/Grid";
 // import { ViewBtn, SaveBtn } from "../ResultsCardBtn";
 
-export const ResultsCard = ({result}) => {
+export const ResultsCard = ({result, formatAuthors}) => {
     return (
         <Row>
-            <Col size="md-12" className="card">
-                <Row>
+            <Col size="md-12" className="card p-3 my-1">
+                <Row className="mb-2">
                     <Col size="md-6">
                         <a href={result.link}><h5>{result.title}</h5></a>
-                        Written by {result.author}
+                        Written by {formatAuthors(result.author)}
                     </Col>
                     <Col size="md-6">
                         {/* <ViewBtn

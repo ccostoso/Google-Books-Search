@@ -35,7 +35,7 @@ class Search extends Component {
                 const results = [];
                 items.forEach(item => {
                     const { title, authors: author, previewLink: link } = item.volumeInfo;
-                    const { thumbnail: image } = item.volumeInfo.imageLinks;
+                    const image = item.volumeInfo.imageLinks ?  item.volumeInfo.imageLinks.smallThumbnail : "";
                     const { id } = item;
                     const description = item.searchInfo ? item.searchInfo.textSnippet : "No description provided";
                     const result = {
@@ -60,6 +60,14 @@ class Search extends Component {
             .catch(err => console.log(err));
     }
 
+    formatAuthors = authors => {
+        if (typeof authors === "string") {
+            return authors.length > 1 ? authors.join(", ") : authors[0];
+        }
+        
+        return authors;
+    }
+
     render() {
         return (
             <div>
@@ -70,6 +78,7 @@ class Search extends Component {
                 />
                 <ResultsBox
                     results={this.state.results}
+                    formatAuthors={this.formatAuthors}
                 />
             </div>
         )
