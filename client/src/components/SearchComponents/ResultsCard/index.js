@@ -11,7 +11,6 @@ export const ResultsCard = result => {
                         <Link to={result.link}><h5>{result.title}</h5></Link>
                         Written by {
                             result.author.length > 1 ? result.author : result.author.map(a=> `${a}, `)
-                        
                         }
                     </Col>
                     <Col size="md-6">

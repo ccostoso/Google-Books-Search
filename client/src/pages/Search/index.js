@@ -1,5 +1,6 @@
 import React, { Component } from "react";
-import SearchBox from "../../components/SearchComponents/SearchBox";
+import { SearchBox } from "../../components/SearchComponents/SearchBox";
+import { ResultsBox } from "../../components/SearchComponents/ResultsBox";
 import API from "../../utils/API";
 
 class Search extends Component {
@@ -24,6 +25,9 @@ class Search extends Component {
             searchValue={this.state.searchValue}
             onClick={this.handleClick}
             onChange={this.handleChange}
+        />
+        <ResultsBox 
+            results={this.results}
         />
     }
 }
