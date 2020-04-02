@@ -25,14 +25,13 @@ export const TextArea = props => {
 
 export const FormBtn = props => {
     return (
-        <button className={`
-                btn 
-                btn-${props.btntype || "success"}
-                ${props.btnsize ? `btn-${props.btnsize}` : "" }
-                ${props.className ? props.className : ""}
-            `} 
-            {...props}
-            >
+        <button className={
+        `${props.classNames ? props.classNames : ""}
+        btn 
+        btn-${props.btntype || "success"} 
+        ${props.btnsize ? `btn-${props.btnsize}` : "" }
+        ${props.float ? `float-${props.float}` : ""}
+        `} {...props}>
                 {props.children}
         </button>
     )

@@ -2,7 +2,7 @@ import React from "react";
 import { Input, FormBtn } from "../../UniversalComponents/Form";
 import { Container } from "../../UniversalComponents/Grid";
 
-export const SearchBox = ({ searchValue, handleChange, handleClick }) => {
+export const SearchBox = ({ searchValue, handleChange, handleSearch }) => {
     return (
         <Container>
             <div className="card p-4 my-4">
@@ -18,10 +18,11 @@ export const SearchBox = ({ searchValue, handleChange, handleClick }) => {
                     </div>
                     <FormBtn
                         disabled={searchValue}
-                        onClick={handleClick}
+                        onClick={handleSearch}
+                        float="right"
                     >
                         Search
-                </FormBtn>
+                    </FormBtn>
                 </form>
             </div>
         </Container>

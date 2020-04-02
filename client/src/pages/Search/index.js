@@ -22,7 +22,7 @@ class Search extends Component {
         console.log(this.state.searchValue);
     }
 
-    handleClick = event => {
+    handleSearch = event => {
         event.preventDefault();
 
         const { searchValue } = this.state;
@@ -60,8 +60,35 @@ class Search extends Component {
             .catch(err => console.log(err));
     }
 
+    handleSave = e => {
+        e.preventDefault();
+
+        const { id }  = e.target;
+        console.log(id);
+        let toSave;
+        
+        API.searchBook(id)
+            .then(res => {
+                const { title, authors: author, previewLink: link } = res.data.volumeInfo;
+                const image = res.data.volumeInfo.imageLinks ?  res.data.volumeInfo.imageLinks.smallThumbnail : "";
+                const description = res.data.searchInfo ? res.data.searchInfo.textSnippet : "No description provided";
+                toSave = {
+                    title: title,
+                    author: author,
+                    link: link,
+                    image: image,
+                    description: description,
+                    }
+            })
+            .catch(err => console.log(err));
+
+        API.saveBook(toSave)
+            .then(res => console.log(res))
+            .catch(err => console.log(err));
+    }
+
     formatAuthors = authors => {
-        if (typeof authors === "string") {
+        if (typeof authors === "object") {
             return authors.length > 1 ? authors.join(", ") : authors[0];
         }
         
@@ -73,11 +100,12 @@ class Search extends Component {
             <div>
                 <SearchBox
                     value={this.state.searchValue}
-                    handleClick={this.handleClick}
                     handleChange={this.handleChange}
+                    handleSearch={this.handleSearch}
                 />
                 <ResultsBox
                     results={this.state.results}
+                    handleSave={this.handleSave}
                     formatAuthors={this.formatAuthors}
                 />
             </div>

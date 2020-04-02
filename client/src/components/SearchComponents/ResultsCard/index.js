@@ -1,9 +1,10 @@
 import React from "react";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import { Row, Col } from "../../UniversalComponents/Grid";
+import { FormBtn } from "../../UniversalComponents/Form";
 // import { ViewBtn, SaveBtn } from "../ResultsCardBtn";
 
-export const ResultsCard = ({result, formatAuthors}) => {
+export const ResultsCard = ({ result, handleSave, formatAuthors }) => {
     return (
         <Row>
             <Col size="md-12" className="card p-3 my-1">
@@ -16,11 +17,21 @@ export const ResultsCard = ({result, formatAuthors}) => {
                         {/* <ViewBtn
                             id={result.id}
                             onClick={handleViewClick}
-                        />
-                        <SaveBtn
-                            id={result.id}
-                            onClick={handleSaveClick}
-                        /> */}
+                        />*/}
+                        <div className="d-flex justify-content-end">
+                            <a className="btn btn-info mr-1"
+                                href={result.link}
+                                alt="View at Google Books"
+                            >
+                                Google Books
+                            </a>
+                            <FormBtn
+                                onClick={handleSave}
+                                {...result}
+                            >
+                                Save
+                            </FormBtn>
+                        </div>
                     </Col>
                 </Row>
                 <Row>
