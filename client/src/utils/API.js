@@ -12,10 +12,11 @@ export default {
     },
     // Gets all books
     getBooks: function() {
-        return axios.get("/api/books/");
+        return axios.get("http://localhost:3000/api/Books/");
     },
     // Saves a book to the database
     saveBook: function(bookData) {
+        console.log("BOOK DATA LOOK AT ME!!!!:", bookData);
         return axios.post("/api/books/", bookData);
     },
     // Deletes the book with the given id

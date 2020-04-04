@@ -78,13 +78,13 @@ class Search extends Component {
                     link: link,
                     image: image,
                     description: description,
-                    }
+                }
                 
                 return toSave;
             }).then(toSave => {
                 console.log("Book to save is: " + toSave);
-                API.saveBook(toSave);
-            })
+                return API.saveBook(toSave);
+            }).then(response=> console.log(response))
             .catch(err => console.log(err));
 
         
