@@ -2,7 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "./style.css";
 
-export const Nav = props => {
+export const Nav = ({active, handleActive}) => {
+    console.log("active is: " + active);
     return (
         <nav className="navbar navbar-expand-lg navbar-dark">
             <div className="mr-auto">
@@ -16,17 +17,25 @@ export const Nav = props => {
 
             <div className="collapse navbar-collapse" id="navbar-content">
                 <ul className="navbar-nav ml-auto">
-                    <li className="nav-item active">
-                        <Link className="nav-link" to="/register">About <span className="sr-only">(current)</span></Link>
+                    <li className={`nav-item ${active === "search" && "active"}`}>
+                        <Link 
+                            className="nav-link" 
+                            to="/"
+                            value={"search"}
+                            onClick={handleActive}
+                            >
+                                Search {active === "search" && <span className="sr-only">(current)</span>}
+                            </Link>
                     </li>
-                    <li className="nav-item dropdown">
-                        <Link className="nav-link dropdown-toggle" to="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Account
-                        </Link>
-                        <div className="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                            <Link className="dropdown-item" to="/messages">Messages</Link>
-                            <Link className="dropdown-item" to="/settings">Settings</Link>
-                        </div>
+                    <li className={`nav-item ${active === "saved" && "active"}`}>
+                        <Link 
+                            className="nav-link" 
+                            to="/saved"
+                            value={"saved"}
+                            onClick={handleActive}
+                            >
+                                Saved {active === "saved" && <span className="sr-only">(current)</span>}
+                            </Link>
                     </li>
                 </ul>
             </div>

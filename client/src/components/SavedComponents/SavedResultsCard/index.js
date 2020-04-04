@@ -3,7 +3,7 @@ import { Row, Col } from "../../UniversalComponents/Grid";
 import { FormBtn } from "../../UniversalComponents/Form";
 // import { ViewBtn, SaveBtn } from "../ResultsCardBtn";
 
-export const ResultsCard = ({ result, handleSave, formatAuthors }) => {
+export const SavedResultsCard = ({ result, handleSave, formatAuthors }) => {
     return (
         <Row>
             <Col size="md-12" className="card p-3 my-1">

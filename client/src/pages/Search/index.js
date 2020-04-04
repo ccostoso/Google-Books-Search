@@ -79,12 +79,19 @@ class Search extends Component {
                     image: image,
                     description: description,
                     }
+                
+                return toSave;
+            }).then(toSave => {
+                console.log("Book to save is: " + toSave);
+                API.saveBook(toSave);
             })
             .catch(err => console.log(err));
 
-        API.saveBook(toSave)
-            .then(res => console.log(res))
-            .catch(err => console.log(err));
+        
+
+        // API.saveBook(toSave)
+        //     .then(res => console.log(res))
+        //     .catch(err => console.log(err));
     }
 
     formatAuthors = authors => {

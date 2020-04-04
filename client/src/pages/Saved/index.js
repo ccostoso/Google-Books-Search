@@ -1,10 +1,16 @@
 import React, { Component } from "react";
-// import { SavedBox } from "../../components/SavedComponents/SavedBox";
+import { SavedResultsBox } from "../../components/SavedComponents/SavedResultsBox";
 import API from "../../utils/API";
 
 class Saved extends Component {
     state = {
-        results: []
+        results: [{
+            title: "title",
+            author: ["author1", "author2"],
+            description: "A description",
+            img: "",
+            link: "http://google.com",
+        }]
     }
 
     componentDidMount() {
@@ -37,13 +43,23 @@ class Saved extends Component {
         this.deleteBook(id);
     }
 
+    formatAuthors = authors => {
+        if (typeof authors === "object") {
+            return authors.length > 1 ? authors.join(", ") : authors[0];
+        }
+        
+        return authors;
+    }
+
     render() {
         return (
-            <div>hi</div>
-            // <SavedBox
-            //     results={this.state.results}
-            //     handleClick={this.handleClick}
-            // />
+            <div>
+                <SavedResultsBox
+                    results={this.state.results}
+                    handleClick={this.handleClick}
+                    formatAuthors={this.formatAuthors}
+                />
+            </div>
         )
     }
 }
