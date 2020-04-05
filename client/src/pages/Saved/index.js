@@ -4,13 +4,7 @@ import API from "../../utils/API";
 
 class Saved extends Component {
     state = {
-        results: [{
-            title: "title",
-            author: ["author1", "author2"],
-            description: "A description",
-            img: "",
-            link: "http://google.com",
-        }]
+        results: [],
     }
 
     componentDidMount() {
@@ -27,20 +21,16 @@ class Saved extends Component {
             .catch(err => console.log(err));
     }
 
-    deleteBook = id => {
-        API.deleteBook(id)
-            .then(res => {
-                this.loadBooks();
-            })
-            .catch(err => console.log(err))
-    }
-
-    handleClick = e => {
-        const { id } = e.target
-
+    handleDelete = e => {
         e.preventDefault();
 
-        this.deleteBook(id);
+        const { value } = e.target;
+
+        API.deleteBook(value)
+        .then(res => {
+            this.loadBooks();
+        })
+        .catch(err => console.log(err))
     }
 
     formatAuthors = authors => {
@@ -56,7 +46,7 @@ class Saved extends Component {
             <div>
                 <SavedResultsBox
                     results={this.state.results}
-                    handleClick={this.handleClick}
+                    handleDelete={this.handleDelete}
                     formatAuthors={this.formatAuthors}
                 />
             </div>

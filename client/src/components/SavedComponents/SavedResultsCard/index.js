@@ -3,7 +3,7 @@ import { Row, Col } from "../../UniversalComponents/Grid";
 import { FormBtn } from "../../UniversalComponents/Form";
 // import { ViewBtn, SaveBtn } from "../ResultsCardBtn";
 
-export const SavedResultsCard = ({ result, handleSave, formatAuthors }) => {
+export const SavedResultsCard = ({ result, handleDelete, formatAuthors }) => {
     return (
         <Row>
             <Col size="md-12" className="card p-3 my-1">
@@ -13,10 +13,6 @@ export const SavedResultsCard = ({ result, handleSave, formatAuthors }) => {
                         Written by {formatAuthors(result.author)}
                     </Col>
                     <Col size="md-6">
-                        {/* <ViewBtn
-                            id={result.id}
-                            onClick={handleViewClick}
-                        />*/}
                         <div className="d-flex justify-content-end">
                             <a className="btn btn-info mr-1"
                                 href={result.link}
@@ -25,10 +21,10 @@ export const SavedResultsCard = ({ result, handleSave, formatAuthors }) => {
                                 Google Books
                             </a>
                             <FormBtn
-                                onClick={handleSave}
-                                {...result}
+                                value={result._id}
+                                onClick={handleDelete}
                             >
-                                Save
+                                Delete
                             </FormBtn>
                         </div>
                     </Col>

@@ -16,6 +16,10 @@ class App extends Component {
 
     }
 
+    handleMatch = path => {
+        console.log(path);
+    }
+
     handleActive = e => {
         console.log(e.target);
         const { value } = e.target;
