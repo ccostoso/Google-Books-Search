@@ -12,7 +12,7 @@ export default {
     },
     // Gets all books
     getBooks: function() {
-        return axios.get("http://localhost:3000/api/books/");
+        return axios.get("/api/books/");
     },
     // Saves a book to the database
     saveBook: function(bookData) {
