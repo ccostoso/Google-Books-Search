@@ -1,14 +1,14 @@
 import axios from "axios";
-import config from "./config";
+const api_key = process.env.REACT_APP_API_KEY;
 
 export default {
     // Searches for books on Google Books by keyword
     searchBooks: function(searchValue) {
-        return axios.get(`https://www.googleapis.com/books/v1/volumes?q=${searchValue}&key=${config.apiKey}`);
+        return axios.get(`https://www.googleapis.com/books/v1/volumes?q=${searchValue}&key=${api_key}`);
     },
     // Searches for book on Google Books by ID
     searchBook: function(searchId) {
-        return axios.get(`https://www.googleapis.com/books/v1/volumes/${searchId}?key=${config.apiKey}`)
+        return axios.get(`https://www.googleapis.com/books/v1/volumes/${searchId}?key=${api_key}`)
     },
     // Gets all books
     getBooks: function() {
